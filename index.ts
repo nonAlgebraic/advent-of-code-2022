@@ -2,10 +2,10 @@ import { readFileSync } from 'fs';
 import type { DayFunction, DayPart } from './types';
 
 async function getAnswerForDayAndPart(day: number, part: DayPart) {
-	const dayFunc = (await import(`./days/${day}/${part}`)).default as DayFunction;
-	const dayInput = readFileSync(`./days/${day}/${part}.input`, 'utf-8');
+	const dayPartFunc = (await import(`./days/${day}/${part}`)).default as DayFunction;
+	const dayInput = readFileSync(`./days/${day}/input`, 'utf-8');
 
-	return await dayFunc(dayInput);
+	return await dayPartFunc(dayInput);
 }
 
 async function printAnswerForDayAndPart(day: number, part: DayPart) {

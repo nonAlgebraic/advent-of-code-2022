@@ -1,6 +1,4 @@
-import type { DayFunction } from '../../types';
-
-const day1: DayFunction = (input: string) => {
+export default (input: string) => {
 	const lists = input.split('\n\n');
 
 	let max = 0;
@@ -12,5 +10,3 @@ const day1: DayFunction = (input: string) => {
 
 	return max;
 };
-
-export default day1;
