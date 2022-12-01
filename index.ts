@@ -3,9 +3,14 @@ import type { DayFunction, DayPart } from './types';
 
 async function getAnswerForDayAndPart(day: number, part: DayPart) {
 	const dayPartFunc = (await import(`./days/${day}/${part}`)).default as DayFunction;
+
 	const dayInput = readFileSync(`./days/${day}/input`, 'utf-8');
 
-	return await dayPartFunc(dayInput);
+	console.time('execution time');
+	const answer = dayPartFunc(dayInput);
+	console.timeEnd('execution time');
+
+	return answer;
 }
 
 async function printAnswerForDayAndPart(day: number, part: DayPart) {
