@@ -14,9 +14,12 @@ async function getAnswerForDayAndPart(day: number, part: DayPart) {
 }
 
 async function printAnswerForDayAndPart(day: number, part: DayPart) {
-	const answer = await getAnswerForDayAndPart(day, part);
-
-	console.log(Bun.inspect(answer));
+	try {
+		const answer = await getAnswerForDayAndPart(day, part);
+		console.log(Bun.inspect(answer));
+	} catch (e) {
+		console.error(e);
+	}
 }
 
 printAnswerForDayAndPart(Number(process.argv[2]), Number(process.argv[3]) as DayPart);
